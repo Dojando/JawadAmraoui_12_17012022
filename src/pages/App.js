@@ -1,10 +1,13 @@
-
+import Header from "../components/header"
+import Aside from "../components/aside"
 
 function App() {
   return (
     <div className="App">
-      <h1>Test</h1>
-      <p>Test</p>
+      <Header />
+      <div className="app-body">
+        <Aside />
+      </div>
     </div>
   );
 }
