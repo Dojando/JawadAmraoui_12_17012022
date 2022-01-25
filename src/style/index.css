@@ -43,6 +43,7 @@ body {
 }
 
 .app-body {
+  display: flex;
   width: 100%;
 }
 
@@ -75,3 +76,82 @@ body {
   font-size: 12px;
   transform: rotate(-90deg);
 }
+
+/* dashboard */
+
+.dashboard {
+  margin: 70px 100px 0 100px;
+  width: 100%;
+}
+
+.dashboard-header h1 {
+  font-size: 48px;
+  margin-bottom: 30px;
+}
+
+.dashboard-header p {
+  font-size: 18px;
+}
+
+.red-name {
+  color: #FF0101;
+}
+
+.dashboard-body {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 70px;
+}
+
+/* section graphiques */
+
+.graphs-list {
+  width: 835px;
+  height: 575px;
+  background-color: red;
+}
+
+/* données alimentaire */
+
+.food-data-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.food-data {
+  width: 258px;
+  height: 124px;
+  background-color: #FBFBFB;
+  border-radius: 5px;
+}
+
+.food-data {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.food-data-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 175px;
+}
+
+.food-data-container img {
+  width: 60px;
+  height: 60px;
+}
+
+.food-quantity {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.food-type {
+  font-size: 14px;
+  color: #74798C;
+}
+
