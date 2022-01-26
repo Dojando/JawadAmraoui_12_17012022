@@ -1,6 +1,7 @@
 import Header from "../components/header"
 import Aside from "../components/aside"
 import FoodData from "../components/foodData"
+import BarChartGraph from "../components/barChart.jsx"
 import calorieLogo from "../images/calories-icon.png"
 import carbLogo from "../images/carbs-icon.png"
 import proteinLogo from "../images/protein-icon.png"
@@ -19,7 +20,9 @@ function App() {
           </header>
           <div className="dashboard-body">
             <div className="graphs-list">
-              <div className="graph1"></div>
+              <div className="barchart-container">
+                <BarChartGraph />
+              </div>
               <div className="graph2"></div>
               <div className="graph3"></div>
               <div className="graph4"></div>

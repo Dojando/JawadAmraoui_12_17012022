@@ -108,7 +108,23 @@ body {
 .graphs-list {
   width: 835px;
   height: 575px;
-  background-color: red;
+}
+
+.barchart-container {
+  background-color: #FBFBFB;
+  display: flex;
+  justify-content: center;
+  border-radius: 5px
+}
+
+.barchart {
+  position: relative;
+}
+
+.barchart-title {
+  position: absolute;
+  top: 20px;
+  font-weight: 700;
 }
 
 /* données alimentaire */
