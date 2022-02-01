@@ -2,6 +2,8 @@ import Header from "../components/header"
 import Aside from "../components/aside"
 import FoodData from "../components/foodData"
 import BarChartGraph from "../components/barChart.jsx"
+import LineChart from "../components/lineChart"
+import RadarChart from "../components/radarChart"
 import calorieLogo from "../images/calories-icon.png"
 import carbLogo from "../images/carbs-icon.png"
 import proteinLogo from "../images/protein-icon.png"
@@ -23,9 +25,15 @@ function App() {
               <div className="barchart-container">
                 <BarChartGraph />
               </div>
-              <div className="graph2"></div>
-              <div className="graph3"></div>
-              <div className="graph4"></div>
+              <div className="bottom-graphs">
+                <div className="linechart-container">
+                  <LineChart /> 
+                </div>
+                <div className="radarchart-container">
+                  <RadarChart/>
+                </div>
+                <div className="radialchart-container"></div>
+              </div>
             </div>
             <div className="food-data-list">
               <FoodData logo={ calorieLogo }/>

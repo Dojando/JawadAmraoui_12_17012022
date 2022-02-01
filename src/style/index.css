@@ -106,19 +106,60 @@ body {
 /* section graphiques */
 
 .graphs-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width: 835px;
-  height: 575px;
+  height: 600px;
+}
+
+.bottom-graphs {
+  display: flex;
+  justify-content: space-between;
 }
 
 .barchart-container {
   background-color: #FBFBFB;
   display: flex;
   justify-content: center;
-  border-radius: 5px
+  height: 320px;
+  border-radius: 5px;
+  align-items: center;
+}
+
+.linechart-container {
+  width: 260px;
+  height: 260px;
+  background-color: #FF0000;
+  border-radius: 5px;
+}
+
+.radialchart-container {
+  width: 260px;
+  height: 260px;
+  background-color: rgb(46, 46, 46);
+  border-radius: 5px;
 }
 
 .barchart {
   position: relative;
+}
+
+.linechart {
+  display: flex;
+  flex-direction: column;
+}
+
+.linechart h2 {
+  font-size: 15px;
+  color: white;
+  font-weight: 500;
+  width: 140px;
+  margin: 20px 0 0 20px;
+}
+
+.radarchart {
+  background-color: #282D30;
 }
 
 .barchart-title {
