@@ -134,10 +134,13 @@ body {
   border-radius: 5px;
 }
 
+.radarchart-container {
+  background-color: #282D30;
+  border-radius: 5px;
+}
+
 .radialchart-container {
-  width: 260px;
-  height: 260px;
-  background-color: rgb(46, 46, 46);
+  background-color: #FBFBFB;
   border-radius: 5px;
 }
 
@@ -158,8 +161,32 @@ body {
   margin: 20px 0 0 20px;
 }
 
-.radarchart {
-  background-color: #282D30;
+.radialchart {
+  position: relative;
+}
+
+.radialchart h2 {
+  font-size: 15px;
+  position: absolute;
+  margin: 24px 0 0 30px;
+}
+
+.radialchart-legend {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 80px;
+  font-size: 16px;
+  color: #74798C;
+  font-weight: 600;
+  line-height: 25px;
+}
+
+.radialchart-pourcent {
+  font-size: 26px;
+  color: #282D30;
 }
 
 .barchart-title {

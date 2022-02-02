@@ -4,6 +4,7 @@ import FoodData from "../components/foodData"
 import BarChartGraph from "../components/barChart.jsx"
 import LineChart from "../components/lineChart"
 import RadarChart from "../components/radarChart"
+import RadialChart from "../components/radialBarChart"
 import calorieLogo from "../images/calories-icon.png"
 import carbLogo from "../images/carbs-icon.png"
 import proteinLogo from "../images/protein-icon.png"
@@ -32,7 +33,9 @@ function App() {
                 <div className="radarchart-container">
                   <RadarChart/>
                 </div>
-                <div className="radialchart-container"></div>
+                <div className="radialchart-container">
+                  <RadialChart/>
+                </div>
               </div>
             </div>
             <div className="food-data-list">
