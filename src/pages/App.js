@@ -15,50 +15,52 @@ import fatLogo from "../images/fat-icon.png"
 function App() {
   const [lineGraphData, setLineGraphData] = useState(null);
   const [radarGraphData, setRadarGraphData] = useState(null);
-  let dataSet = [];
-  let radarSet = [];
+  const [barGraphData, setBarGraphData] = useState(null);
+  const [userData, setUserData] = useState(null);
+  let lineDataSet = [];
+  let radarDataSet = [];
 
   const lineData = (data) => {
     data.data.sessions.forEach(el => {
       if (el.day === 1) {
         el.day = "L";
-        return dataSet.push(el);
+        return lineDataSet.push(el);
       }
       if (el.day === 2) {
         el.day = "M";
-        return dataSet.push(el);
+        return lineDataSet.push(el);
       }
       if (el.day === 3) {
         el.day = "M";
-        return dataSet.push(el);
+        return lineDataSet.push(el);
       }
       if (el.day === 4) {
         el.day = "J";
-        return dataSet.push(el);
+        return lineDataSet.push(el);
       }
       if (el.day === 5) {
         el.day = "V";
-        return dataSet.push(el);
+        return lineDataSet.push(el);
       }
       if (el.day === 6) {
         el.day = "S";
-        return dataSet.push(el);
+        return lineDataSet.push(el);
       }
       if (el.day === 7) {
         el.day = "D";
-        return dataSet.push(el);
+        return lineDataSet.push(el);
       }
     });
-    console.log(dataSet)
-    setLineGraphData(dataSet)
+    console.log(lineDataSet)
+    setLineGraphData(lineDataSet)
   };
 
   const radarData = (data) => {
     data.data.data.map((el) => {
       el.kind = data.data.kind[el.kind];
-      return radarSet.push(el);
+      return radarDataSet.push(el);
     })
-    setRadarGraphData(radarSet)
+    setRadarGraphData(radarDataSet)
   }
 
 
@@ -79,13 +81,21 @@ function App() {
     )
   }, [])
   
-  // useEffect(() => {
-  //   fetch(`http://localhost:3000/user/12/performance`)
-  //     .then((response) => response.json()
-  //     .then((res) => radarData(res))
-  //     .catch((error) => console.log(error))
-  //   )
-  // }, [])
+  useEffect(() => {
+    fetch(`http://localhost:3000/user/12/activity`)
+      .then((response) => response.json()
+      .then((res) => setBarGraphData(res.data.sessions))
+      .catch((error) => console.log(error))
+    )
+  }, [])
+
+  useEffect(() => {
+    fetch(`http://localhost:3000/user/12`)
+      .then((response) => response.json()
+      .then((res) => setUserData(res.data))
+      .catch((error) => console.log(error))
+    )
+  }, [])
 
   return (
     <div className="App">
@@ -94,13 +104,13 @@ function App() {
         <Aside />
         <div className="dashboard">
           <header className="dashboard-header">
-            <h1>Bonjour <span className="red-name">Thomas</span></h1> 
+            <h1>Bonjour <span className="red-name">{userData === null ? null : userData.userInfos.firstName}</span></h1> 
             <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
           </header>
           <div className="dashboard-body">
             <div className="graphs-list">
               <div className="barchart-container">
-                <BarChartGraph />
+              { barGraphData === null ? null : <BarChartGraph dataSet={barGraphData} />}
               </div>
               <div className="bottom-graphs">
                 <div className="linechart-container">
@@ -115,10 +125,10 @@ function App() {
               </div>
             </div>
             <div className="food-data-list">
-              <FoodData logo={ calorieLogo }/>
-              <FoodData logo={ proteinLogo }/>
-              <FoodData logo={ carbLogo }/>
-              <FoodData logo={ fatLogo }/>
+            {userData === null ? null : <FoodData logo={ calorieLogo } value={userData.keyData.calorieCount} type="Calories" unit="kCal" />}
+            {userData === null ? null : <FoodData logo={ proteinLogo } value={userData.keyData.proteinCount} type="Proteines" unit="g" />}
+            {userData === null ? null : <FoodData logo={ carbLogo } value={userData.keyData.carbohydrateCount} type="Glucides" unit="g" />}
+            {userData === null ? null : <FoodData logo={ fatLogo } value={userData.keyData.lipidCount} type="Lipides" unit="g" />}
             </div>
           </div>
         </div>

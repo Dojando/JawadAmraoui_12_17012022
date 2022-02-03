@@ -246,13 +246,17 @@ body {
 .food-data-container {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   width: 175px;
 }
 
 .food-data-container img {
   width: 60px;
   height: 60px;
+}
+
+.food-quantity-container {
+  margin-left: 24px;
 }
 
 .food-quantity {
