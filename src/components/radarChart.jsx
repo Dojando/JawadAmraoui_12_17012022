@@ -7,46 +7,22 @@ import {
   PolarRadiusAxis
 } from "recharts";
 
-const data = [
-  {
-    value: 80,
-    kind: 1
-},
-{
-    value: 120,
-    kind: 2
-},
-{
-    value: 140,
-    kind: 3
-},
-{
-    value: 50,
-    kind: 4
-},
-{
-    value: 200,
-    kind: 5
-},
-{
-    value: 90,
-    kind: 6
-}
-];
+function RadarChartGraph(props) {
 
-function RadarChartGraph() {
+  const data = props.dataSet;
+
   return (
     <div className="radarchart">
       <RadarChart
         cx={130}
         cy={130}
-        outerRadius={90}
+        outerRadius={70}
         width={260}
         height={260}
         data={data}
       >
         <PolarGrid />
-        <PolarAngleAxis tick={{stroke: 'white'  }}  dataKey="kind" />
+        <PolarAngleAxis tick={{fill: 'white'}}  dataKey="kind" />
         <PolarRadiusAxis />
         <Radar
           dataKey="value"

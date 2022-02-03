@@ -12,12 +12,13 @@ import proteinLogo from "../images/protein-icon.png"
 import fatLogo from "../images/fat-icon.png"
 
 
-
 function App() {
-  const [graphData, setGraphData] = useState(null);
+  const [lineGraphData, setLineGraphData] = useState(null);
+  const [radarGraphData, setRadarGraphData] = useState(null);
   let dataSet = [];
+  let radarSet = [];
 
-  const formatData = (data) => {
+  const lineData = (data) => {
     data.data.sessions.forEach(el => {
       if (el.day === 1) {
         el.day = "L";
@@ -49,18 +50,42 @@ function App() {
       }
     });
     console.log(dataSet)
-    setGraphData(dataSet)
+    setLineGraphData(dataSet)
   };
-  console.log(graphData)
+
+  const radarData = (data) => {
+    data.data.data.map((el) => {
+      el.kind = data.data.kind[el.kind];
+      return radarSet.push(el);
+    })
+    setRadarGraphData(radarSet)
+  }
+
 
 
   useEffect(() => {
     fetch(`http://localhost:3000/user/12/average-sessions`)
       .then((response) => response.json()
-      .then((res) => formatData(res))
+      .then((res) => lineData(res))
       .catch((error) => console.log(error))
     )
   }, [])
+
+  useEffect(() => {
+    fetch(`http://localhost:3000/user/12/performance`)
+      .then((response) => response.json()
+      .then((res) => radarData(res))
+      .catch((error) => console.log(error))
+    )
+  }, [])
+  
+  // useEffect(() => {
+  //   fetch(`http://localhost:3000/user/12/performance`)
+  //     .then((response) => response.json()
+  //     .then((res) => radarData(res))
+  //     .catch((error) => console.log(error))
+  //   )
+  // }, [])
 
   return (
     <div className="App">
@@ -79,10 +104,10 @@ function App() {
               </div>
               <div className="bottom-graphs">
                 <div className="linechart-container">
-                  { graphData === null ? null : <LineChart dataSet={graphData} />} 
+                  { lineGraphData === null ? null : <LineChart dataSet={lineGraphData} />} 
                 </div>
                 <div className="radarchart-container">
-                  <RadarChart/>
+                { radarGraphData === null ? null : <RadarChart dataSet={radarGraphData} />} 
                 </div>
                 <div className="radialchart-container">
                   <RadialChart/>

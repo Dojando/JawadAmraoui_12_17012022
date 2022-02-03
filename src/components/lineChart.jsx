@@ -34,7 +34,7 @@ function LineChartGraph(props) {
           left: 20,
           bottom: 5
         }}>
-        <XAxis axisLine="" tickLine="" tick={{stroke: 'white', strokeWidth: 1}}  dataKey="day"/>
+        <XAxis axisLine="" tickLine="" tick={{fill: 'white'}} dataKey="day"/>
         <Tooltip content={<CustomTooltip />}/>
         <Line
           type="monotone"
