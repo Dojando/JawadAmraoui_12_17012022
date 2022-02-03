@@ -120,7 +120,7 @@ function App() {
                 { radarGraphData === null ? null : <RadarChart dataSet={radarGraphData} />} 
                 </div>
                 <div className="radialchart-container">
-                  <RadialChart/>
+                { userData === null ? null : <RadialChart dataSet={userData.score} />} 
                 </div>
               </div>
             </div>
