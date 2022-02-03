@@ -101,6 +101,7 @@ body {
   display: flex;
   justify-content: space-between;
   margin-top: 70px;
+  max-width: 1200px;
 }
 
 /* section graphiques */
@@ -161,6 +162,17 @@ body {
   margin: 20px 0 0 20px;
 }
 
+.linechart-tooltip {
+  background-color: white;
+  color: black;
+  font-weight: 600;
+  padding: 0 10px 0 10px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .radialchart {
   position: relative;
 }
@@ -193,6 +205,17 @@ body {
   position: absolute;
   top: 20px;
   font-weight: 700;
+}
+
+.barchart-tooltip {
+  background-color: red;
+  color: white;
+  padding: 0 10px 0 10px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: space-around;
 }
 
 /* données alimentaire */

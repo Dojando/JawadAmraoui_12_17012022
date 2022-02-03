@@ -47,6 +47,22 @@ const data = [
 }
 ];
 
+const CustomTooltip = ({ active, payload }) => {
+  if (active && payload && payload.length) {
+    return (
+      <div className="barchart-tooltip">
+        <p>{`${payload[0].value}kg`}</p>
+        <p>{`${payload[1].value}Kcal`}</p>
+      </div>
+    );
+  }
+  return null;
+};
+
+const renderColorfulLegendText = (value) => {
+  return <span style={{ color:"black" }}>{value}</span>;
+};
+
 function BarChartGraph() {
   return (
     <div className="barchart">
@@ -56,11 +72,11 @@ function BarChartGraph() {
         <XAxis dataKey="day" />
         <YAxis orientation="right"
             />
-        <Tooltip contentStyle={{  background: "red", color: "white" }} itemStyle={{ color: "white" }}/>
-        <Legend
+        <Tooltip content={<CustomTooltip />} />
+        <Legend formatter={renderColorfulLegendText}
           verticalAlign="top"
           align="right"
-          wrapperStyle={{ lineHeight: "50px" }}
+          wrapperStyle={{ lineHeight: "50px"}}
         />
 
         <Bar name="Poids (kg)" dataKey="kilogram" fill="black" />
