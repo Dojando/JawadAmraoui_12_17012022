@@ -10,6 +10,7 @@ import calorieLogo from "../images/calories-icon.png"
 import carbLogo from "../images/carbs-icon.png"
 import proteinLogo from "../images/protein-icon.png"
 import fatLogo from "../images/fat-icon.png"
+import * as ApiCall from "../apiCall"
 
 
 function App() {
@@ -64,37 +65,36 @@ function App() {
   }
 
 
-
   useEffect(() => {
-    fetch(`http://localhost:3000/user/12/average-sessions`)
-      .then((response) => response.json()
-      .then((res) => lineData(res))
-      .catch((error) => console.log(error))
-    )
+    async function apiCallAverageSessionsData() {
+      let result = await ApiCall.getAverageSessions();
+      lineData(result);
+    }
+    apiCallAverageSessionsData();
   }, [])
 
   useEffect(() => {
-    fetch(`http://localhost:3000/user/12/performance`)
-      .then((response) => response.json()
-      .then((res) => radarData(res))
-      .catch((error) => console.log(error))
-    )
+    async function apiCallPerformance() {
+      let result = await ApiCall.getPerformance();
+      radarData(result);
+    }
+    apiCallPerformance();
   }, [])
   
   useEffect(() => {
-    fetch(`http://localhost:3000/user/12/activity`)
-      .then((response) => response.json()
-      .then((res) => setBarGraphData(res.data.sessions))
-      .catch((error) => console.log(error))
-    )
+    async function apiCallActivity() {
+      let result = await ApiCall.getActivity();
+      setBarGraphData(result.data.sessions);
+    }
+    apiCallActivity();
   }, [])
 
   useEffect(() => {
-    fetch(`http://localhost:3000/user/12`)
-      .then((response) => response.json()
-      .then((res) => setUserData(res.data))
-      .catch((error) => console.log(error))
-    )
+    async function apiCallUserData() {
+      let result = await ApiCall.getUserData();
+      setUserData(result.data);
+    }
+    apiCallUserData();
   }, [])
 
   return (
