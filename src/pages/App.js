@@ -1,5 +1,6 @@
 import {React, useState, useEffect} from "react";
 import Header from "../components/header"
+import Error from "../components/error"
 import Aside from "../components/aside"
 import FoodData from "../components/foodData"
 import BarChartGraph from "../components/barChart.jsx"
@@ -18,8 +19,10 @@ function App() {
   const [radarGraphData, setRadarGraphData] = useState(null);
   const [barGraphData, setBarGraphData] = useState(null);
   const [userData, setUserData] = useState(null);
+  const [validId, setValidId] = useState(true);
   let lineDataSet = [];
   let radarDataSet = [];
+  console.log()
 
   const lineData = (data) => {
     data.data.sessions.forEach(el => {
@@ -52,7 +55,6 @@ function App() {
         return lineDataSet.push(el);
       }
     });
-    console.log(lineDataSet)
     setLineGraphData(lineDataSet)
   };
 
@@ -64,6 +66,16 @@ function App() {
     setRadarGraphData(radarDataSet)
   }
 
+  useEffect(() => {
+    async function apiCallUserData() {
+      let result = await ApiCall.getUserData();
+      if (result === "can not get user") {
+        setValidId(false);
+      }
+      setUserData(result.data);
+    }
+    apiCallUserData();
+  }, [])
 
   useEffect(() => {
     async function apiCallAverageSessionsData() {
@@ -89,19 +101,12 @@ function App() {
     apiCallActivity();
   }, [])
 
-  useEffect(() => {
-    async function apiCallUserData() {
-      let result = await ApiCall.getUserData();
-      setUserData(result.data);
-    }
-    apiCallUserData();
-  }, [])
-
   return (
     <div className="App">
       <Header />
       <div className="app-body">
         <Aside />
+        { validId === false ? <Error /> : 
         <div className="dashboard">
           <header className="dashboard-header">
             <h1>Bonjour <span className="red-name">{userData === null ? null : userData.userInfos.firstName}</span></h1> 
@@ -131,7 +136,7 @@ function App() {
             {userData === null ? null : <FoodData logo={ fatLogo } value={userData.keyData.lipidCount} type="Lipides" unit="g" />}
             </div>
           </div>
-        </div>
+        </div>}
       </div>
     </div>
   );
