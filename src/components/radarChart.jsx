@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import {
   Radar,
   RadarChart,
@@ -33,6 +34,10 @@ function RadarChartGraph(props) {
       </RadarChart>
     </div>
   );
+}
+
+RadarChartGraph.propTypes = {
+  dataSet: PropTypes.array.isRequired
 }
 
 export default RadarChartGraph;

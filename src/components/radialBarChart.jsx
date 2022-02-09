@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import { RadialBarChart, RadialBar } from "recharts";
 
 function RadialChartGraph(props) {
@@ -37,6 +38,10 @@ function RadialChartGraph(props) {
       </RadialBarChart>      
     </div>
   );
+}
+
+RadialChartGraph.propTypes = {
+  dataSet: PropTypes.number.isRequired
 }
 
 export default RadialChartGraph;

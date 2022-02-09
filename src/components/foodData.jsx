@@ -1,4 +1,4 @@
-
+import PropTypes from 'prop-types';
 
 function FoodData(props) {
   return (
@@ -12,6 +12,13 @@ function FoodData(props) {
       </div>
     </div>
   );
+}
+
+FoodData.propTypes = {
+  logo: PropTypes.string.isRequired,
+  value: PropTypes.number.isRequired,
+  type: PropTypes.string.isRequired,
+  unit: PropTypes.string.isRequired
 }
 
 export default FoodData;

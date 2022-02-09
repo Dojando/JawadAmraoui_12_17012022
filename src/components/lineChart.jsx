@@ -1,4 +1,5 @@
-import {React, useState, useEffect} from "react";
+import {React} from "react";
+import PropTypes from 'prop-types';
 import {
   LineChart,
   Line,
@@ -46,6 +47,10 @@ function LineChartGraph(props) {
       </LineChart>      
     </div>
   );
+}
+
+LineChartGraph.propTypes = {
+  dataSet: PropTypes.array.isRequired
 }
 
 export default LineChartGraph;

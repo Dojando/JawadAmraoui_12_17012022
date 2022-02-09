@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import {
   BarChart,
   Bar,
@@ -51,6 +52,10 @@ function BarChartGraph(props) {
       </BarChart>
     </div>
   );
+}
+
+BarChartGraph.propTypes = {
+  dataSet: PropTypes.array.isRequired
 }
 
 export default BarChartGraph;
