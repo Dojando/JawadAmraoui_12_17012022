@@ -1,5 +1,13 @@
 import PropTypes from 'prop-types';
 
+/**
+ * render FoodData component
+ * @param { string } logo
+ * @param { number } value
+ * @param { string } type
+ * @param { string } unit
+ * return {ReactElement}
+ */
 function FoodData(props) {
   return (
     <div className="food-data">

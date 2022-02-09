@@ -8,6 +8,11 @@ import {
   PolarRadiusAxis
 } from "recharts";
 
+/**
+ * render a RadarChart graph
+ * @param { array } dataSet
+ * return {ReactElement}
+ */
 function RadarChartGraph(props) {
 
   const data = props.dataSet;

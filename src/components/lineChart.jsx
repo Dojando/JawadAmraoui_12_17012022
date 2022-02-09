@@ -7,7 +7,12 @@ import {
   Tooltip,
 } from "recharts";
 
-// function to show custom content in the tooltip
+/**
+ * function to show custom content in the tooltip
+ * @param { boolean } active
+ * @param { array } payload
+ * return {HTMLElement}
+ */
 const CustomTooltip = ({ active, payload }) => {
   if (active && payload && payload.length) {
     return (
@@ -19,6 +24,11 @@ const CustomTooltip = ({ active, payload }) => {
   return null;
 };
 
+/**
+ * render a LineChart graph
+ * @param { array } dataSet
+ * return {ReactElement}
+ */
 function LineChartGraph(props) {
   
   const graphsetData = props.dataSet;

@@ -2,6 +2,11 @@ import React from "react";
 import PropTypes from 'prop-types';
 import { RadialBarChart, RadialBar } from "recharts";
 
+/**
+ * render a RadialChart graph
+ * @param { number } dataSet
+ * return {ReactElement}
+ */
 function RadialChartGraph(props) {
 
   const data = [

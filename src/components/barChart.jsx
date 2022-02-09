@@ -10,7 +10,12 @@ import {
   Legend
 } from "recharts";
 
-// function to show custom content in the tooltip
+/**
+ * function to show custom content in the tooltip
+ * @param { boolean } active
+ * @param { array } payload
+ * return {HTMLElement}
+ */
 const CustomTooltip = ({ active, payload }) => {
   if (active && payload && payload.length) {
     return (
@@ -23,11 +28,20 @@ const CustomTooltip = ({ active, payload }) => {
   return null;
 };
 
-// function to change legend text color
+/**
+ * function to change legend text color
+ * @param { string } value
+ * return {HTMLElement}
+ */
 const renderColorfulLegendText = (value) => {
   return <span style={{ color:"black" }}>{value}</span>;
 };
 
+/**
+ * render a RadialChart graph
+ * @param { array } dataSet
+ * return {ReactElement}
+ */
 function BarChartGraph(props) {
   
   const data = props.dataSet;
