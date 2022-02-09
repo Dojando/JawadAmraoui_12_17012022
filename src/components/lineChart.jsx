@@ -7,6 +7,7 @@ import {
   Tooltip,
 } from "recharts";
 
+// function to show custom content in the tooltip
 const CustomTooltip = ({ active, payload }) => {
   if (active && payload && payload.length) {
     return (

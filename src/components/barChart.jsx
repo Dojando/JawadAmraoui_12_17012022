@@ -10,8 +10,7 @@ import {
   Legend
 } from "recharts";
 
-
-
+// function to show custom content in the tooltip
 const CustomTooltip = ({ active, payload }) => {
   if (active && payload && payload.length) {
     return (
@@ -24,6 +23,7 @@ const CustomTooltip = ({ active, payload }) => {
   return null;
 };
 
+// function to change legend text color
 const renderColorfulLegendText = (value) => {
   return <span style={{ color:"black" }}>{value}</span>;
 };

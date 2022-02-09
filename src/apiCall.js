@@ -1,4 +1,3 @@
-
 const id = 12;
 const domain = "localhost:3000";
 

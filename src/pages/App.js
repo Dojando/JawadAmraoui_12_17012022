@@ -15,6 +15,7 @@ import * as ApiCall from "../apiCall"
 
 
 function App() {
+  // state of the component
   const [lineGraphData, setLineGraphData] = useState(null);
   const [radarGraphData, setRadarGraphData] = useState(null);
   const [barGraphData, setBarGraphData] = useState(null);
@@ -24,6 +25,7 @@ function App() {
   let radarDataSet = [];
   console.log()
 
+  // function to replace number by the corresponding day for the LineChart graph
   const lineData = (data) => {
     data.data.sessions.forEach(el => {
       if (el.day === 1) {
@@ -58,6 +60,7 @@ function App() {
     setLineGraphData(lineDataSet)
   };
 
+  // function to replace number by the corresponding performance kind for the RadarChart graph
   const radarData = (data) => {
     data.data.data.map((el) => {
       el.kind = data.data.kind[el.kind];
@@ -66,6 +69,7 @@ function App() {
     setRadarGraphData(radarDataSet)
   }
 
+  // async api call for the user data
   useEffect(() => {
     async function apiCallUserData() {
       let result = await ApiCall.getUserData();
@@ -77,6 +81,7 @@ function App() {
     apiCallUserData();
   }, [])
 
+  // async api call for the user average sessions
   useEffect(() => {
     async function apiCallAverageSessionsData() {
       let result = await ApiCall.getAverageSessions();
@@ -85,6 +90,7 @@ function App() {
     apiCallAverageSessionsData();
   }, [])
 
+  // async api call for the user performance
   useEffect(() => {
     async function apiCallPerformance() {
       let result = await ApiCall.getPerformance();
@@ -93,6 +99,7 @@ function App() {
     apiCallPerformance();
   }, [])
   
+  // async api call for the user activity
   useEffect(() => {
     async function apiCallActivity() {
       let result = await ApiCall.getActivity();
@@ -106,6 +113,7 @@ function App() {
       <Header />
       <div className="app-body">
         <Aside />
+        {/* If the api call return no data, render the Error component instead of the dashboard */}
         { validId === false ? <Error /> : 
         <div className="dashboard">
           <header className="dashboard-header">
