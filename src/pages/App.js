@@ -20,12 +20,16 @@ function App() {
   const [radarGraphData, setRadarGraphData] = useState(null);
   const [barGraphData, setBarGraphData] = useState(null);
   const [userData, setUserData] = useState(null);
-  const [validId, setValidId] = useState(true);
+  const [validId, setValidId] = useState(false);
   let lineDataSet = [];
   let radarDataSet = [];
   console.log()
 
-  // function to replace number by the corresponding day for the LineChart graph
+  /**
+   * function to replace number by the corresponding day for the LineChart graph
+   * @param { object } data
+   * return {array}
+   */
   const lineData = (data) => {
     data.data.sessions.forEach(el => {
       if (el.day === 1) {
@@ -60,7 +64,11 @@ function App() {
     setLineGraphData(lineDataSet)
   };
 
-  // function to replace number by the corresponding performance kind for the RadarChart graph
+  /**
+   * function to replace number by the corresponding performance kind for the RadarChart graph
+   * @param { object } data
+   * return {array}
+   */
   const radarData = (data) => {
     data.data.data.map((el) => {
       el.kind = data.data.kind[el.kind];
@@ -73,10 +81,12 @@ function App() {
   useEffect(() => {
     async function apiCallUserData() {
       let result = await ApiCall.getUserData();
-      if (result === "can not get user") {
+      if (result !== "can not get user") {
+        setValidId(true);
+        setUserData(result.data);
+      } else {
         setValidId(false);
       }
-      setUserData(result.data);
     }
     apiCallUserData();
   }, [])
