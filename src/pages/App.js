@@ -21,9 +21,9 @@ function App() {
   const [barGraphData, setBarGraphData] = useState(null);
   const [userData, setUserData] = useState(null);
   const [validId, setValidId] = useState(false);
+  const urlId = window.location.pathname.split("/")[1]
   let lineDataSet = [];
   let radarDataSet = [];
-  console.log()
 
   /**
    * function to replace number by the corresponding day for the LineChart graph
@@ -80,12 +80,14 @@ function App() {
   // async api call for the user data
   useEffect(() => {
     async function apiCallUserData() {
-      let result = await ApiCall.getUserData();
-      if (result !== "can not get user") {
+      let result = await ApiCall.getUserData(urlId);
+
+      console.log(result)
+      if (result === "can not get user" || urlId.length === 0 ) {
+        setValidId(false);
+      } else {
         setValidId(true);
         setUserData(result.data);
-      } else {
-        setValidId(false);
       }
     }
     apiCallUserData();
@@ -94,7 +96,7 @@ function App() {
   // async api call for the user average sessions
   useEffect(() => {
     async function apiCallAverageSessionsData() {
-      let result = await ApiCall.getAverageSessions();
+      let result = await ApiCall.getAverageSessions(urlId);
       lineData(result);
     }
     apiCallAverageSessionsData();
@@ -103,7 +105,7 @@ function App() {
   // async api call for the user performance
   useEffect(() => {
     async function apiCallPerformance() {
-      let result = await ApiCall.getPerformance();
+      let result = await ApiCall.getPerformance(urlId);
       radarData(result);
     }
     apiCallPerformance();
@@ -112,7 +114,7 @@ function App() {
   // async api call for the user activity
   useEffect(() => {
     async function apiCallActivity() {
-      let result = await ApiCall.getActivity();
+      let result = await ApiCall.getActivity(urlId);
       setBarGraphData(result.data.sessions);
     }
     apiCallActivity();
