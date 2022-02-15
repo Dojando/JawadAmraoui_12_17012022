@@ -1,7 +1,8 @@
 ## Project prerequisite
 
-- npm (nodeJS)
-- yarn
+- npm (nodeJS v14.17.6)
+- yarn v1.22.17
+- Visual Studio Code (éditeur de texte recommandé)
 
 ## Run the project frontend
 
